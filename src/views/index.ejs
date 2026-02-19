@@ -1,0 +1,39 @@
+<%-include("includes/head.ejs")  %>
+
+<body>
+    <h1 class="head">All Messages :</h1>
+    <form method="GET" action="/message">
+        <button>Add Message</button>
+    </form>
+
+    <div class="mainBox">
+<% message.forEach((m)=> { %>
+
+        <div class="box">
+            <h3>From: <%= m.from %>
+            </h3>
+
+            <h4>
+                Message : <%= m.msg %>
+            </h4>
+
+            <h3>Received by: <%= m.to %>
+            </h3>
+
+            <h3>Date: <%= m.created_at.toString().split(" ")[4] %>
+            </h3>
+
+            <div class="buttons">
+                <form method="GET" action="/editMessage/<%= m._id %>">
+                    <button>Edit</button>
+                </form>
+
+                <form method="POST" action="/deleteMessage/<%= m._id %>?_method=DELETE">
+                    <button>Delete</button>
+                </form>
+            </div>
+        </div>
+    <% }) %>
+        </div>
+</body>
+</html>

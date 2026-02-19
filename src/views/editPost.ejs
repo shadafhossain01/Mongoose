@@ -1,0 +1,11 @@
+<%-include("includes/head.ejs") %>
+
+    <body>
+        <h1 class="head">Edit Message :</h1>
+        <form method="POST" action="/editMessage/<%=message.id%>?_method=PATCH">
+            <textarea cols="40" rows="10" name="msg" > <%= message.msg %> </textarea><br /><br />
+            <button>Update</button>
+        </form>
+    </body>
+
+    </html>
